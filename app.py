@@ -20,17 +20,14 @@ class Student(db.Model):
     lastname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
     age = db.Column(db.Integer)
-    created_at = db.Column(db.DateTime(timezone=True),
-                           server_default=func.now())
+    created_at = db.Column(
+    db.DateTime(timezone=True),
+    server_default=func.now()
+    )
     bio = db.Column(db.Text)
 
     def __repr__(self):
         return f'<Student {self.firstname}>'
-
-@app.route('/')
-def index():
-    students = Student.query.all()
-    return render_template('index.html', students=students)
 
 @app.route('/<int:student_id>/')
 def student(student_id):
