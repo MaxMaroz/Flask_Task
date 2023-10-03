@@ -14,7 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(100), nullable=False)
@@ -28,19 +27,15 @@ class Student(db.Model):
     def __repr__(self):
         return f'<Student {self.firstname}>'
 
-
 @app.route('/')
 def index():
     students = Student.query.all()
     return render_template('index.html', students=students)
 
-
 @app.route('/<int:student_id>/')
 def student(student_id):
     student = Student.query.get_or_404(student_id)
     return render_template('student.html', student=student)
-
-
 
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
@@ -61,8 +56,6 @@ def create():
         return redirect(url_for('index'))
 
     return render_template('create.html')
-
-
 
 @app.route('/<int:student_id>/edit/', methods=('GET', 'POST'))
 def edit(student_id):
@@ -87,9 +80,7 @@ def edit(student_id):
         return redirect(url_for('index'))
 
     return render_template('edit.html', student=student)
-
-
-
+        
 @app.post('/<int:student_id>/delete/')
 def delete(student_id):
     student = Student.query.get_or_404(student_id)
