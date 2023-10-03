@@ -50,7 +50,7 @@ def create():
         db.session.add(student)
         db.session.commit()
 
-        return redirect(url_for('index'))
+        return redirect(url_for('index.html'))
 
     return render_template('create.html')
 
