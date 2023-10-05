@@ -1,0 +1,6 @@
+1) sudo -iu postgres psql  // to open postgres
+2)postgres=# CREATE DATABASE flas_db;
+3) CREATE USER max WITH PASSWORD '5459605'; // creat role
+4) GRANT ALL PRIVILEGES ON DATABASE flas_db TO max
+5) \l //confirm it
+6)\q //quite
