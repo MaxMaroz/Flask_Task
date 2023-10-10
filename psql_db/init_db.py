@@ -9,7 +9,6 @@ conn = psycopg2.connect (
 
 cur = conn.cursor()
 
-cur.execute('DROP TABLE IF EXISTS albums;')
 cur.execute('CREATE TABLE albums (id serial PRIMARY KEY,'
 				 'title varchar (150) NOT NULL,'
 				 'author varchar (50) NOT NULL,'
@@ -25,13 +24,6 @@ cur.execute('INSERT INTO albums (title, author, songs_num, review)'
 	     'A great classic!')
 	   )
 
-cur.execute('INSERT INTO albums (title, author, songs_num, review)'
-	    'VALUES (%s, %s, %s, %s)',
-	    ('Arntor',
-	     'Windir',
-	     7,
-	     'Another great classic!')
-	   )
 
 conn.commit()
 
