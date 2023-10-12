@@ -16,13 +16,7 @@ cur.execute('CREATE TABLE albums (id serial PRIMARY KEY,'
 				 'review text,'
 				 'date_added date DEFAULT CURRENT_TIMESTAMP);'				 	 )
 
-cur.execute('INSERT INTO albums (title, author, songs_num, review)'
-	    'VALUES (%s, %s, %s, %s)',
-	    ('Minas Morgul',
-	     'Summoning',
-	     11,
-	     'A great classic!')
-	   )
+
 
 
 conn.commit()
