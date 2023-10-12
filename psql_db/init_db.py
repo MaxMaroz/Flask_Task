@@ -16,6 +16,8 @@ cur.execute('CREATE TABLE albums (id serial PRIMARY KEY,'
 				 'review text,'
 				 'date_added date DEFAULT CURRENT_TIMESTAMP);'				 	 )
 
+cur.execute('CREATE TABLE IF NOT EXISTS albums')
+
 
 
 
