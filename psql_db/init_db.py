@@ -9,17 +9,12 @@ conn = psycopg2.connect (
 
 cur = conn.cursor()
 
-cur.execute('CREATE TABLE albums (id serial PRIMARY KEY,'
+cur.execute('CREATE TABLE IF NOT EXISTS albums (id serial PRIMARY KEY,'
 				 'title varchar (150) NOT NULL,'
 				 'author varchar (50) NOT NULL,'
 				 'songs_num integer NOT NULL,'
 				 'review text,'
-				 'date_added date DEFAULT CURRENT_TIMESTAMP);'				 	 )
-
-cur.execute('CREATE TABLE IF NOT EXISTS albums')
-
-
-
+				 'date_added date DEFAULT CURRENT_TIMESTAMP);'
 
 conn.commit()
 
