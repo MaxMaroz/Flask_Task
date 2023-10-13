@@ -18,7 +18,5 @@ cur.execute('CREATE TABLE IF NOT EXISTS albums (id serial PRIMARY KEY,'
 
 conn.commit()
 
-cur.close()
-conn.close()
 
 	     
