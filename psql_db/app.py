@@ -1,15 +1,15 @@
-import os
-import psycopg2 
+import psycopg2
+from waitress import serve
 from flask import Flask, render_template, request, url_for, redirect
+import init_db
 
 app = Flask (__name__)
 
 def get_db_connection():
-    conn = psycopg2.connect(host='localhost',
+    conn = psycopg2.connect(host='postgres',
 			    database='flas_db',
-			    user=os.environ['DB_USERNAME'],
-			    password=os.environ['DB_PASSWORD']
-			   )
+                user='baldur',
+                password='5459605')
 
     return conn
 
@@ -42,4 +42,8 @@ def create():
       return redirect(url_for('index'))
 
   return render_template('create.html')
+
+if __name__ == "__main__":
+    print('Server has being run')
+    serve(app, listen='*:8888')
 

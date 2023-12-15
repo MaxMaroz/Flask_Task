@@ -1,11 +1,11 @@
 import os
 import psycopg2
 
-conn = psycopg2.connect (
-	host="localhost",
+conn = psycopg2.connect(
+	host="postgres",
 	database="flas_db",
-	user=os.environ['DB_USERNAME'],
-	password=os.environ['DB_PASSWORD'])
+	user='baldur',
+	password='5459605')
 
 cur = conn.cursor()
 
@@ -14,9 +14,10 @@ cur.execute('CREATE TABLE IF NOT EXISTS albums (id serial PRIMARY KEY,'
 				 'author varchar (50) NOT NULL,'
 				 'songs_num integer NOT NULL,'
 				 'review text,'
-				 'date_added date DEFAULT CURRENT_TIMESTAMP);'
+				 'date_added date DEFAULT CURRENT_TIMESTAMP);')
 
 conn.commit()
 
 
-	     
+
+

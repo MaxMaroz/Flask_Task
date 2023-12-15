@@ -1,0 +1,24 @@
+version: '3.9'
+volumes:
+  db-data:
+services:
+  postgres:
+    restart: always
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=baldur
+      - POSTGRES_PASSWORD=5459605
+      - POSTGRES_DB=flas_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    entrypoint: ["python", "app.py"]
