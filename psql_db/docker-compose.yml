@@ -14,12 +14,11 @@ services:
     ports:
       - "5432:5432"
   app:
-    restart: always
     build: .
     ports:
-      - 5000:5000
+      - 8888:8888
     volumes:
-      - .:/app  
+      - .:/app
     depends_on:
       - postgres
-    entrypoint: ["python", "manage.py", "runserver"]
+    entrypoint: ["python", "app.py"]
